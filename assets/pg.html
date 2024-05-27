@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bekk &ndash; {{.Spec.Name}}</title>
+</head>
+<body>
+  <h1>{{.Spec.Name}}</h1>
+  <p>Started in {{ .Spec.StartYear }}. Lead by <a href="https://ansatt.bekk.no/ansatt/{{.Spec.Leader.EmployeeId}}" target="_blank">{{ .Spec.Leader.Name }}</a>.</p>
+  <h2>Members</h2>
+  <ul>
+    {{range .Spec.Members }}
+      <li>
+        <a href="https://ansatt.bekk.no/ansatt/{{.EmployeeId}}" target="_blank">
+            {{ .Name }}</a> ({{ .Seniority }}, {{ .Department }})
+      </li>
+    {{end}}
+  </ul>
+</body>
+</html>

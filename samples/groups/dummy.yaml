@@ -1,0 +1,18 @@
+apiVersion: bekk.no/v1alpha1
+kind: PracticeGroup
+metadata:
+  name: dummy
+  namespace: demo
+spec:
+  name: Dummy Group
+  startYear: 2023
+  leader:
+    department: Technology
+    employeeId: 26
+    name: Olav Folkestad
+    seniority: Manager
+  members:
+    - department: Design
+      employeeId: 9999
+      name: John Doe
+      seniority: Manager

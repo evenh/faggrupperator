@@ -1,0 +1,131 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.15.0
+  name: practicegroups.bekk.no
+spec:
+  group: bekk.no
+  names:
+    kind: PracticeGroup
+    listKind: PracticeGroupList
+    plural: practicegroups
+    shortNames:
+    - pg
+    singular: practicegroup
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: PracticeGroup is the Schema for the practicegroups API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: PracticeGroupSpec defines the desired state of PracticeGroup
+            properties:
+              leader:
+                description: The leader of the practice group.
+                properties:
+                  department:
+                    description: The department that this practice group belongs to.
+                    enum:
+                    - Technology
+                    - Design
+                    - Operations
+                    - Trondheim
+                    type: string
+                  employeeId:
+                    description: The unique ID assigned to each employee, as seen
+                      in internal systems.
+                    format: int32
+                    type: integer
+                  name:
+                    description: The full name of the employee.
+                    type: string
+                  seniority:
+                    description: The seniority of the employee
+                    enum:
+                    - Consultant
+                    - Senior Consultant
+                    - Manager
+                    - Principal
+                    type: string
+                required:
+                - department
+                - employeeId
+                - name
+                - seniority
+                type: object
+              members:
+                description: Members of the practice group.
+                items:
+                  properties:
+                    department:
+                      description: The department that this practice group belongs
+                        to.
+                      enum:
+                      - Technology
+                      - Design
+                      - Operations
+                      - Trondheim
+                      type: string
+                    employeeId:
+                      description: The unique ID assigned to each employee, as seen
+                        in internal systems.
+                      format: int32
+                      type: integer
+                    name:
+                      description: The full name of the employee.
+                      type: string
+                    seniority:
+                      description: The seniority of the employee
+                      enum:
+                      - Consultant
+                      - Senior Consultant
+                      - Manager
+                      - Principal
+                      type: string
+                  required:
+                  - department
+                  - employeeId
+                  - name
+                  - seniority
+                  type: object
+                type: array
+              name:
+                description: Name in human-readable form.
+                type: string
+              startYear:
+                description: The year that is practice group started.
+                type: integer
+            required:
+            - leader
+            - members
+            - name
+            type: object
+          status:
+            description: PracticeGroupStatus defines the observed state of PracticeGroup
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

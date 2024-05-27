@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: demo
+  labels:
+    app: nginx
+  annotations:
+    configmap.reloader.stakater.com/reload: "practice-groups"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.23.3
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: practice-groups
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: demo
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: nginx

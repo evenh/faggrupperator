@@ -1,0 +1,46 @@
+apiVersion: bekk.no/v1alpha1
+kind: PracticeGroup
+metadata:
+  name: platform-engineering
+  namespace: demo
+spec:
+  name: Platform Engineering
+  startYear: 2023
+  leader:
+    department: Technology
+    employeeId: 1500
+    name: Even Holthe
+    seniority: Manager
+  members:
+    - department: Technology
+      employeeId: 1427
+      name: Anders Refsdal Olsen
+      seniority: Senior Consultant
+    - department: Technology
+      employeeId: 1405
+      name: Daniel Romanich
+      seniority: Senior Consultant
+    - department: Technology
+      employeeId: 1427
+      name: Ingar Mathisen Almklov
+      seniority: Manager
+    - department: Technology
+      employeeId: 1804
+      name: Johannes Bråthen Oma
+      seniority: Manager
+    - department: Technology
+      employeeId: 1690
+      name: Maren Sofie Ringsby
+      seniority: Senior Consultant
+    - department: Technology
+      employeeId: 748
+      name: Nicklas Utgaard
+      seniority: Manager
+    - department: Technology
+      employeeId: 1048
+      name: Per Øyvind Kanestrøm
+      seniority: Manager
+    - department: Technology
+      employeeId: 153
+      name: Stefan Magnus Landrø
+      seniority: Manager
